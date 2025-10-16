@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+import Paper from "../components/Paper.astro";
+
+import { Image } from "astro:assets";
+import ishneetPP from "../assets/ishneet.jpeg";
+---
+
+<Layout>
+    <main
+        class="flex items-center justify-center flex-col gap-12 py-12 px-4 md:px-0 md:w-1/2 w-full"
+    >
+        <div class="w-full flex items-center justify-center flex-row gap-4">
+            <div class="w-[80px] h-[80px]">
+                <Image
+                    src={ishneetPP}
+                    alt="Ishneet Sukhvinder Singh Profile Picture"
+                    class="rounded-sm"
+                />
+            </div>
+            <div class="flex items-start justify-center flex-col flex-1 gap-2">
+                <h1 class="text-2xl font-bold">ishneet sukhvinder singh</h1>
+                <div
+                    class="flex items-center justify-center flex-row gap-4 text-sm"
+                >
+                    <Link
+                        text="scholar"
+                        url="https://scholar.google.com/citations?user=iZOstDMAAAAJ&hl=en"
+                    />
+                    <p>&#183;</p>
+                    <Link text="git" url="https://github.com/Ishneet0710" />
+                    <p>&#183;</p>
+                    <Link
+                        text="in"
+                        url="https://www.linkedin.com/in/ishneet-singh-a51697210/"
+                    />
+                    <p>&#183;</p>
+                    <Link text="x" url="https://x.com/tenthouse21" />
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-full flex items-start justify-center flex-col border-y-2 py-4 px-1 text-sm"
+        >
+            <p>
+                computer engineering, <span class="font-bold">oxford</span>
+            </p>
+            <p>
+                research, <span class="font-bold">uwash rse lab</span>
+            </p>
+            <p>
+                robotics, <span class="font-bold">menlo research</span>
+            </p>
+            <p>
+                national science scholar, <span class="font-bold">a*star</span>
+            </p>
+            <div
+                class="flex items-center justify-end flex-row gap-x-4 text-cyan-600 w-full pt-2 flex-wrap"
+            >
+                <p>#ml</p>
+                <p>#ai</p>
+                <p>#llms</p>
+                <p>#retrieval</p>
+                <p>#rl</p>
+                <p>#robotics</p>
+                <p>#cv</p>
+                <p>#interpretability</p>
+            </div>
+        </div>
+        <div class="w-full flex items-start justify-center flex-col gap-y-4">
+            <h1>
+                <span class="font-bold">publications</span>
+                <span class="text-gray-500 text-xs">(*=equal contribution)</span
+                >
+            </h1>
+            <Paper
+                title="ChunkRAG: Novel LLM-Chunk Filtering Method for RAG Systems"
+                venue="NAACL SRW 2025, SoCal NLP Symposium 2024"
+                authors={[
+                    "IS Singh",
+                    "R Aggarwal",
+                    "I Allahverdiyev",
+                    "M Taha",
+                    "A Akalin",
+                    "K Zhu",
+                    "S O'Brien",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://arxiv.org/pdf/2410.19572",
+                    },
+                ]}
+            />
+            <Paper
+                title="What Do Refusal Tokens Learn? Fine-Grained Representations and Evidence for Downstream Steering"
+                venue="NeurIPS Mechanistic Interpretability 2025"
+                authors={[
+                    "R Alagharu*",
+                    "IS Singh*",
+                    "A Batta",
+                    "JS Liang",
+                    "S Shamsudeen",
+                    "A Sheth",
+                    "K Zhu",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://openreview.net/pdf?id=szBGSWqwB7",
+                    },
+                    {
+                        text: "code",
+                        url: "https://github.com/RishabSA/interp-refusal-tokens",
+                    },
+                ]}
+            />
+            <Paper
+                title="Rewrite-to-Rank: Optimizing Ad Visibility via Retrieval-Aware Text Rewriting"
+                venue="ICML MoFA 2025, ICML VecDB 2025"
+                authors={[
+                    "C Ho*",
+                    "IS Singh*",
+                    "D Sharma",
+                    "TR Anumandla",
+                    "M Lu",
+                    "V Sharma",
+                    "K Zhu",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://arxiv.org/pdf/2507.21099",
+                    },
+                    {
+                        text: "code",
+                        url: "https://github.com/m1chae11u/ad-doc-reranker",
+                    },
+                ]}
+            />
+            <Paper
+                title="Vision-based dirt distribution mapping using deep learning"
+                venue="Scientific Reports 2023"
+                authors={[
+                    "IS Singh",
+                    "ID Wijegunawardana",
+                    "SMBP Samarakoon",
+                    "MAVJ Muthugala",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://www.nature.com/articles/s41598-023-38538-3",
+                    },
+                ]}
+            />
+            <Paper
+                title="A Novel Feature Vector for AI-Assisted Windows Malware Detection"
+                venue="IEEE DASC 2023"
+                authors={[
+                    "LQ Yau",
+                    "YT Lam",
+                    "A Lokesh",
+                    "P Gupta",
+                    "J Lim",
+                    "IS Singh",
+                    "JY Loo",
+                    "MV Ngo",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://ieeexplore.ieee.org/document/10361451",
+                    },
+                    {
+                        text: "code",
+                        url: "https://github.com/Ishneet0710/malwareai",
+                    },
+                ]}
+            />
+            <Paper
+                title="Real-time privacy preserving human activity recognition on mobile using 1dcnn-bilstm deep learning"
+                venue="ACM IVSP 2023"
+                authors={[
+                    "IS Singh",
+                    "P Kaza",
+                    "PG Hosler Iv",
+                    "ZY Chin",
+                    "KK Ang",
+                ]}
+                links={[
+                    {
+                        text: "paper",
+                        url: "https://dl.acm.org/doi/10.1145/3591156.3591159",
+                    },
+                    {
+                        text: "code",
+                        url: "https://github.com/Ishneet0710/chart",
+                    },
+                ]}
+            />
+        </div>
+    </main>
+</Layout>
