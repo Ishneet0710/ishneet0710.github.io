@@ -1,205 +1,406 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link.astro";
-import Paper from "../components/Paper.astro";
-
+import Icon from "../components/Icon.astro";
+import PublicationCard from "../components/PublicationCard.astro";
 import { Image } from "astro:assets";
 import ishneetPP from "../assets/ishneet.jpeg";
+
+const navItems = [
+    { title: "News", href: "#news", section: "news" },
+    { title: "Publications", href: "#publications", section: "publications" },
+    { title: "Experience", href: "#experience", section: "experience" },
+    { title: "Education", href: "#education", section: "education" },
+    { title: "Awards", href: "#awards", section: "awards" },
+];
+
+const socials = [
+    {
+        icon: "scholar",
+        label: "Google Scholar",
+        url: "https://scholar.google.com/citations?user=iZOstDMAAAAJ&hl=en",
+    },
+    { icon: "github", label: "GitHub", url: "https://github.com/Ishneet0710" },
+    {
+        icon: "linkedin",
+        label: "LinkedIn",
+        url: "https://www.linkedin.com/in/ishneet-singh-a51697210/",
+    },
+    { icon: "x", label: "X", url: "https://x.com/tenthouse21" },
+];
+
+const interests = [
+    "ml",
+    "ai",
+    "llms",
+    "retrieval",
+    "rl",
+    "robotics",
+    "cv",
+    "interpretability",
+];
+
+// News — derived from real paper acceptances/publications (newest first)
+const news = [
+    {
+        date: "2025/12",
+        html: 'Our paper <em>What Do Refusal Tokens Learn?</em> was accepted to the <a href="https://openreview.net/pdf?id=szBGSWqwB7" target="_blank" rel="noopener noreferrer">NeurIPS Mechanistic Interpretability Workshop 2025</a>.',
+    },
+    {
+        date: "2025/07",
+        html: 'Our paper <em>Rewrite-to-Rank</em> was accepted to the <a href="https://arxiv.org/pdf/2507.21099" target="_blank" rel="noopener noreferrer">ICML MoFA & VecDB Workshops 2025</a>.',
+    },
+    {
+        date: "2025/04",
+        html: 'Our paper <em>ChunkRAG</em> was accepted to <a href="https://arxiv.org/pdf/2410.19572" target="_blank" rel="noopener noreferrer">NAACL SRW 2025</a>.',
+    },
+    {
+        date: "2024/11",
+        html: "Presented <em>ChunkRAG</em> at the SoCal NLP Symposium 2024.",
+    },
+    {
+        date: "2023/07",
+        html: 'Our paper <em>Vision-based Dirt Distribution Mapping using Deep Learning</em> was published in <a href="https://www.nature.com/articles/s41598-023-38538-3" target="_blank" rel="noopener noreferrer">Scientific Reports</a>.',
+    },
+    {
+        date: "2023/06",
+        html: 'Our paper on <em>AI-Assisted Windows Malware Detection</em> was accepted to <a href="https://ieeexplore.ieee.org/document/10361451" target="_blank" rel="noopener noreferrer">IEEE DASC 2023</a>.',
+    },
+    {
+        date: "2023/04",
+        html: 'Our paper on <em>Privacy-Preserving Human Activity Recognition</em> was accepted to <a href="https://dl.acm.org/doi/10.1145/3591156.3591159" target="_blank" rel="noopener noreferrer">ACM IVSP 2023</a>.',
+    },
+];
+const NEWS_LIMIT = 5;
+
+const publications = [
+    {
+        title: "ChunkRAG: Novel LLM-Chunk Filtering Method for RAG Systems",
+        authors: [
+            { name: "IS Singh", highlight: true },
+            { name: "R Aggarwal" },
+            { name: "I Allahverdiyev" },
+            { name: "M Taha" },
+            { name: "A Akalin" },
+            { name: "K Zhu" },
+            { name: "S O'Brien" },
+        ],
+        venue: [
+            { text: "NAACL SRW 2025" },
+            { text: "SoCal NLP Symposium 2024" },
+        ],
+        links: [{ kind: "paper", label: "paper", url: "https://arxiv.org/pdf/2410.19572" }],
+    },
+    {
+        title: "What Do Refusal Tokens Learn? Fine-Grained Representations and Evidence for Downstream Steering",
+        authors: [
+            { name: "R Alagharu", marks: "*" },
+            { name: "IS Singh", highlight: true, marks: "*" },
+            { name: "A Batta" },
+            { name: "JS Liang" },
+            { name: "S Shamsudeen" },
+            { name: "A Sheth" },
+            { name: "K Zhu" },
+        ],
+        venue: [{ text: "NeurIPS Mechanistic Interpretability 2025" }],
+        links: [
+            { kind: "paper", label: "paper", url: "https://openreview.net/pdf?id=szBGSWqwB7" },
+            { kind: "code", label: "code", url: "https://github.com/RishabSA/interp-refusal-tokens" },
+        ],
+    },
+    {
+        title: "Rewrite-to-Rank: Optimizing Ad Visibility via Retrieval-Aware Text Rewriting",
+        authors: [
+            { name: "C Ho", marks: "*" },
+            { name: "IS Singh", highlight: true, marks: "*" },
+            { name: "D Sharma" },
+            { name: "TR Anumandla" },
+            { name: "M Lu" },
+            { name: "V Sharma" },
+            { name: "K Zhu" },
+        ],
+        venue: [{ text: "ICML MoFA 2025" }, { text: "ICML VecDB 2025" }],
+        links: [
+            { kind: "paper", label: "paper", url: "https://arxiv.org/pdf/2507.21099" },
+            { kind: "code", label: "code", url: "https://github.com/m1chae11u/ad-doc-reranker" },
+        ],
+    },
+    {
+        title: "Vision-based dirt distribution mapping using deep learning",
+        authors: [
+            { name: "IS Singh", highlight: true },
+            { name: "ID Wijegunawardana" },
+            { name: "SMBP Samarakoon" },
+            { name: "MAVJ Muthugala" },
+        ],
+        venue: [{ text: "Scientific Reports 2023" }],
+        links: [
+            { kind: "paper", label: "paper", url: "https://www.nature.com/articles/s41598-023-38538-3" },
+        ],
+    },
+    {
+        title: "A Novel Feature Vector for AI-Assisted Windows Malware Detection",
+        authors: [
+            { name: "LQ Yau" },
+            { name: "YT Lam" },
+            { name: "A Lokesh" },
+            { name: "P Gupta" },
+            { name: "J Lim" },
+            { name: "IS Singh", highlight: true },
+            { name: "JY Loo" },
+            { name: "MV Ngo" },
+        ],
+        venue: [{ text: "IEEE DASC 2023" }],
+        links: [
+            { kind: "paper", label: "paper", url: "https://ieeexplore.ieee.org/document/10361451" },
+            { kind: "code", label: "code", url: "https://github.com/Ishneet0710/malwareai" },
+        ],
+    },
+    {
+        title: "Real-time privacy preserving human activity recognition on mobile using 1DCNN-BiLSTM deep learning",
+        authors: [
+            { name: "IS Singh", highlight: true },
+            { name: "P Kaza" },
+            { name: "PG Hosler Iv" },
+            { name: "ZY Chin" },
+            { name: "KK Ang" },
+        ],
+        venue: [{ text: "ACM IVSP 2023" }],
+        links: [
+            { kind: "paper", label: "paper", url: "https://dl.acm.org/doi/10.1145/3591156.3591159" },
+            { kind: "code", label: "code", url: "https://github.com/Ishneet0710/chart" },
+        ],
+    },
+];
 ---
 
 <Layout>
-    <main
-        class="flex items-center justify-center flex-col gap-12 py-12 px-4 md:px-0 md:w-1/2 w-full"
-    >
-        <div class="w-full flex items-center justify-center flex-row gap-4">
-            <div class="w-[80px] h-[80px]">
+    <header class="masthead">
+        <div class="masthead__inner">
+            <a class="masthead__brand" href="#about">Ishneet Sukhvinder Singh</a>
+            <div class="masthead__right">
+                <ul class="masthead__nav">
+                    {
+                        navItems.map((item) => (
+                            <li>
+                                <a href={item.href} data-nav-section={item.section}>
+                                    {item.title}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Toggle color theme"
+                >
+                    <Icon name="sun" class="icon-sun" />
+                    <Icon name="moon" class="icon-moon" />
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrap">
+        <aside class="sidebar">
+            <div class="author__avatar">
                 <Image
                     src={ishneetPP}
-                    alt="Ishneet Sukhvinder Singh Profile Picture"
-                    class="rounded-sm"
+                    alt="Ishneet Sukhvinder Singh"
+                    widths={[180, 360]}
+                    sizes="180px"
                 />
             </div>
-            <div class="flex items-start justify-center flex-col flex-1 gap-2">
-                <h1 class="text-2xl font-bold">ishneet sukhvinder singh</h1>
-                <div
-                    class="flex items-center justify-center flex-row gap-4 text-sm"
-                >
-                    <Link
-                        text="scholar"
-                        url="https://scholar.google.com/citations?user=iZOstDMAAAAJ&hl=en"
-                    />
-                    <p>&#183;</p>
-                    <Link text="git" url="https://github.com/Ishneet0710" />
-                    <p>&#183;</p>
-                    <Link
-                        text="in"
-                        url="https://www.linkedin.com/in/ishneet-singh-a51697210/"
-                    />
-                    <p>&#183;</p>
-                    <Link text="x" url="https://x.com/tenthouse21" />
+            <div class="author__details">
+                <h1 class="author__name">Ishneet Sukhvinder Singh</h1>
+                <p class="author__bio">
+                    Computer Engineering @ Oxford<br />Research @ UW RSE Lab
+                </p>
+            </div>
+            <ul class="social-icons">
+                {
+                    socials.map((s) => (
+                        <li>
+                            <a href={s.url} target="_blank" rel="noopener noreferrer">
+                                <Icon name={s.icon} />
+                                <span>{s.label}</span>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section id="about" class="home-section">
+                <p>
+                    <span id="handwave">👋</span> Hi! I'm Ishneet, a Computer
+                    Engineering student at <a
+                        href="https://www.ox.ac.uk/"
+                        target="_blank"
+                        rel="noopener noreferrer">Oxford</a
+                    >. I do research at the <a
+                        href="https://rse-lab.cs.washington.edu/"
+                        target="_blank"
+                        rel="noopener noreferrer">UW RSE Lab</a
+                    >, work on robotics at <strong>Menlo Research</strong>, and
+                    am a National Science Scholar at <strong>A*STAR</strong>.
+                </p>
+                <p>
+                    My research spans machine learning broadly — with a focus on
+                    LLMs, retrieval, reinforcement learning, robotics, computer
+                    vision, and interpretability.
+                </p>
+                <div class="interest-tags">
+                    {interests.map((t) => <span class="tag">#{t}</span>)}
                 </div>
-            </div>
-        </div>
-        <div
-            class="w-full flex items-start justify-center flex-col border-y-2 py-4 px-1 text-sm"
-        >
-            <p>
-                computer engineering, <span class="font-bold">oxford</span>
-            </p>
-            <p>
-                research, <span class="font-bold">uwash rse lab</span>
-            </p>
-            <p>
-                robotics, <span class="font-bold">menlo research</span>
-            </p>
-            <p>
-                national science scholar, <span class="font-bold">a*star</span>
-            </p>
-            <div
-                class="flex items-center justify-end flex-row gap-x-4 text-cyan-600 w-full pt-2 flex-wrap"
-            >
-                <p>#ml</p>
-                <p>#ai</p>
-                <p>#llms</p>
-                <p>#retrieval</p>
-                <p>#rl</p>
-                <p>#robotics</p>
-                <p>#cv</p>
-                <p>#interpretability</p>
-            </div>
-        </div>
-        <div class="w-full flex items-start justify-center flex-col gap-y-4">
-            <h1>
-                <span class="font-bold">publications</span>
-                <span class="text-gray-500 text-xs">(*=equal contribution)</span
+            </section>
+
+            <section id="news" class="home-section">
+                <h2 class="home-section__title">🔥 News</h2>
+                <ul
+                    class="news-list is-collapsed"
+                    id="news-list"
+                    data-limit={NEWS_LIMIT}
                 >
-            </h1>
-            <Paper
-                title="ChunkRAG: Novel LLM-Chunk Filtering Method for RAG Systems"
-                venue="NAACL SRW 2025, SoCal NLP Symposium 2024"
-                authors={[
-                    "IS Singh",
-                    "R Aggarwal",
-                    "I Allahverdiyev",
-                    "M Taha",
-                    "A Akalin",
-                    "K Zhu",
-                    "S O'Brien",
-                ]}
-                links={[
                     {
-                        text: "paper",
-                        url: "https://arxiv.org/pdf/2410.19572",
-                    },
-                ]}
-            />
-            <Paper
-                title="What Do Refusal Tokens Learn? Fine-Grained Representations and Evidence for Downstream Steering"
-                venue="NeurIPS Mechanistic Interpretability 2025"
-                authors={[
-                    "R Alagharu*",
-                    "IS Singh*",
-                    "A Batta",
-                    "JS Liang",
-                    "S Shamsudeen",
-                    "A Sheth",
-                    "K Zhu",
-                ]}
-                links={[
-                    {
-                        text: "paper",
-                        url: "https://openreview.net/pdf?id=szBGSWqwB7",
-                    },
-                    {
-                        text: "code",
-                        url: "https://github.com/RishabSA/interp-refusal-tokens",
-                    },
-                ]}
-            />
-            <Paper
-                title="Rewrite-to-Rank: Optimizing Ad Visibility via Retrieval-Aware Text Rewriting"
-                venue="ICML MoFA 2025, ICML VecDB 2025"
-                authors={[
-                    "C Ho*",
-                    "IS Singh*",
-                    "D Sharma",
-                    "TR Anumandla",
-                    "M Lu",
-                    "V Sharma",
-                    "K Zhu",
-                ]}
-                links={[
-                    {
-                        text: "paper",
-                        url: "https://arxiv.org/pdf/2507.21099",
-                    },
-                    {
-                        text: "code",
-                        url: "https://github.com/m1chae11u/ad-doc-reranker",
-                    },
-                ]}
-            />
-            <Paper
-                title="Vision-based dirt distribution mapping using deep learning"
-                venue="Scientific Reports 2023"
-                authors={[
-                    "IS Singh",
-                    "ID Wijegunawardana",
-                    "SMBP Samarakoon",
-                    "MAVJ Muthugala",
-                ]}
-                links={[
-                    {
-                        text: "paper",
-                        url: "https://www.nature.com/articles/s41598-023-38538-3",
-                    },
-                ]}
-            />
-            <Paper
-                title="A Novel Feature Vector for AI-Assisted Windows Malware Detection"
-                venue="IEEE DASC 2023"
-                authors={[
-                    "LQ Yau",
-                    "YT Lam",
-                    "A Lokesh",
-                    "P Gupta",
-                    "J Lim",
-                    "IS Singh",
-                    "JY Loo",
-                    "MV Ngo",
-                ]}
-                links={[
-                    {
-                        text: "paper",
-                        url: "https://ieeexplore.ieee.org/document/10361451",
-                    },
-                    {
-                        text: "code",
-                        url: "https://github.com/Ishneet0710/malwareai",
-                    },
-                ]}
-            />
-            <Paper
-                title="Real-time privacy preserving human activity recognition on mobile using 1dcnn-bilstm deep learning"
-                venue="ACM IVSP 2023"
-                authors={[
-                    "IS Singh",
-                    "P Kaza",
-                    "PG Hosler Iv",
-                    "ZY Chin",
-                    "KK Ang",
-                ]}
-                links={[
-                    {
-                        text: "paper",
-                        url: "https://dl.acm.org/doi/10.1145/3591156.3591159",
-                    },
-                    {
-                        text: "code",
-                        url: "https://github.com/Ishneet0710/chart",
-                    },
-                ]}
-            />
-        </div>
-    </main>
+                        news.map((item, i) => (
+                            <li class={i >= NEWS_LIMIT ? "is-hidden" : ""}>
+                                <strong>[{item.date}]</strong>
+                                <span set:html={item.html} />
+                            </li>
+                        ))
+                    }
+                </ul>
+                {
+                    news.length > NEWS_LIMIT && (
+                        <button
+                            class="news-toggle"
+                            type="button"
+                            data-news-toggle
+                            aria-expanded="false"
+                            aria-controls="news-list"
+                        >
+                            <span class="news-toggle__label">Show more</span>
+                            <Icon name="chevron" />
+                        </button>
+                    )
+                }
+            </section>
+
+            <section id="publications" class="home-section">
+                <h2 class="home-section__title">📑 Publications</h2>
+                <div class="publication-legend">
+                    <span><code>*</code> equal contribution</span>
+                </div>
+                {publications.map((pub) => <PublicationCard {...pub} />)}
+            </section>
+
+            <section id="experience" class="home-section">
+                <h2 class="home-section__title">💼 Experience</h2>
+                <ul class="resume-section">
+                    <li class="resume-entry">
+                        <p class="resume-entry__heading">
+                            <strong>University of Washington — RSE Lab</strong>
+                        </p>
+                        <p class="resume-entry__line">Research</p>
+                    </li>
+                    <li class="resume-entry">
+                        <p class="resume-entry__heading">
+                            <strong>Menlo Research</strong>
+                        </p>
+                        <p class="resume-entry__line">Robotics</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="education" class="home-section">
+                <h2 class="home-section__title">🎓 Education</h2>
+                <ul class="resume-section">
+                    <li class="resume-entry">
+                        <p class="resume-entry__heading">
+                            <strong>University of Oxford</strong>
+                        </p>
+                        <p class="resume-entry__line">
+                            <em>Computer Engineering</em>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="awards" class="home-section">
+                <h2 class="home-section__title">🏅 Awards</h2>
+                <ul class="award-list">
+                    <li>National Science Scholarship (A*STAR)</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script is:inline>
+        // Theme toggle
+        (function () {
+            var btn = document.getElementById("theme-toggle");
+            if (btn) {
+                btn.addEventListener("click", function () {
+                    var root = document.documentElement;
+                    var next =
+                        root.getAttribute("data-theme") === "dark"
+                            ? "light"
+                            : "dark";
+                    root.setAttribute("data-theme", next);
+                    try {
+                        localStorage.setItem("theme", next);
+                    } catch (e) {}
+                });
+            }
+        })();
+
+        // Collapsible news
+        (function () {
+            var toggle = document.querySelector("[data-news-toggle]");
+            var list = document.getElementById("news-list");
+            if (!toggle || !list) return;
+            var label = toggle.querySelector(".news-toggle__label");
+            toggle.addEventListener("click", function () {
+                var collapsed = list.classList.toggle("is-collapsed");
+                toggle.setAttribute("aria-expanded", String(!collapsed));
+                if (label)
+                    label.textContent = collapsed ? "Show more" : "Show less";
+            });
+        })();
+
+        // Scrollspy — highlight the active nav section
+        (function () {
+            var links = Array.prototype.slice.call(
+                document.querySelectorAll(".masthead__nav a[data-nav-section]")
+            );
+            if (!links.length || !("IntersectionObserver" in window)) return;
+            var map = {};
+            links.forEach(function (l) {
+                map[l.getAttribute("data-nav-section")] = l;
+            });
+            var observer = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            links.forEach(function (l) {
+                                l.classList.remove("is-active");
+                            });
+                            var active = map[entry.target.id];
+                            if (active) active.classList.add("is-active");
+                        }
+                    });
+                },
+                { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+            );
+            ["news", "publications", "experience", "education", "awards"].forEach(
+                function (id) {
+                    var el = document.getElementById(id);
+                    if (el) observer.observe(el);
+                }
+            );
+        })();
+    </script>
 </Layout>
