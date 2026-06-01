@@ -1,0 +1,71 @@
+/* ==========================================================================
+   DARK THEME
+   ========================================================================== */
+
+/* Color codes used for the theme */
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$brand-bg-dark              : #0F1513;
+$brand-card-dark            : #16201E;
+$brand-surface-dark         : #1B2825;
+$brand-text-dark            : #EFF4F3;
+$brand-text-light-dark      : #B7C4C0;
+$brand-text-muted-dark      : #8FA09B;
+$brand-accent-dark          : #2DD4BF;
+$brand-accent-soft-dark     : #5EEAD4;
+$brand-border-dark          : #28332F;
+$brand-section-tint-dark    : #18241F;
+$brand-footer-dark          : #16201E;
+$brand-accent-strong-dark   : mix(#fff, $brand-accent-dark, 18%);
+$brand-link-dark            : #{$brand-accent-dark};
+$brand-link-hover-dark      : #{$brand-accent-soft-dark};
+$brand-link-visited-dark    : #{mix($brand-accent-dark, $brand-accent-soft-dark, 72%)};
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #2f7f93;
+$notice-color               : #7a8288;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 220px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Dark theme for the site */
+html[data-theme="dark"] {
+    --global-base-color                 : #{$brand-accent-dark};
+    --global-bg-color                   : #{$brand-bg-dark};
+    --global-footer-bg-color            : #{$brand-footer-dark};
+    --global-border-color               : #{$brand-border-dark};
+    --global-dark-border-color          : #{mix(#fff, $brand-border-dark, 8%)};
+    --global-code-background-color      : #{$brand-card-dark};
+    --global-code-text-color            : #{$brand-text-dark};
+    --global-fig-caption-color          : #{$brand-text-muted-dark};
+    --global-link-color                 : #{$brand-link-dark};
+    --global-link-color-hover           : #{$brand-link-hover-dark};
+    --global-link-color-visited         : #{$brand-link-visited-dark};
+    --global-masthead-link-color        : #{$brand-text-light-dark};
+    --global-masthead-link-color-hover  : #{$brand-text-dark};
+    --global-text-color                 : #{$brand-text-dark};
+    --global-text-color-light           : #{$brand-text-light-dark};
+    --global-text-color-muted           : #{$brand-text-muted-dark};
+    --global-thead-color                : #{$brand-section-tint-dark};
+    --global-accent-color               : #{$brand-accent-dark};
+    --global-accent-color-soft          : #{$brand-accent-soft-dark};
+    --global-accent-color-strong        : #{$brand-accent-strong-dark};
+    --global-section-tint-color         : #{$brand-section-tint-dark};
+    --global-surface-color              : #{$brand-surface-dark};
+    --global-chrome-bg-color            : #{$brand-card-dark};
+    --global-glass-bg-color             : rgba(15, 21, 19, 0.78);
+    --global-glass-bg-color-strong      : rgba(22, 32, 30, 0.88);
+    --global-glass-border-color         : rgba(40, 51, 47, 0.9);
+}

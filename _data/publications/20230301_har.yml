@@ -1,0 +1,20 @@
+title: 'Real-time privacy preserving human activity recognition on mobile using 1DCNN-BiLSTM deep learning'
+date: 2023-03-01
+selected: false
+selected_order: none
+authors:
+  - name: IS Singh
+    highlight: true
+  - name: P Kaza
+  - name: PG Hosler IV
+  - name: ZY Chin
+  - name: KK Ang
+venue:
+  - text: 'ACM IVSP 2023'
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://dl.acm.org/doi/10.1145/3591156.3591159'
+  - label: Code
+    kind: code
+    url: 'https://github.com/Ishneet0710/chart'

@@ -1,0 +1,16 @@
+title: 'Vision-based dirt distribution mapping using deep learning'
+date: 2023-07-13
+selected: false
+selected_order: none
+authors:
+  - name: IS Singh
+    highlight: true
+  - name: ID Wijegunawardana
+  - name: SMBP Samarakoon
+  - name: MAVJ Muthugala
+venue:
+  - text: 'Scientific Reports 2023'
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://www.nature.com/articles/s41598-023-38538-3'

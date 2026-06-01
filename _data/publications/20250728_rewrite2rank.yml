@@ -1,0 +1,25 @@
+title: 'Rewrite-to-Rank: Optimizing Ad Visibility via Retrieval-Aware Text Rewriting'
+date: 2025-07-28
+selected: true
+selected_order: none
+authors:
+  - name: C Ho
+    marks: '*'
+  - name: IS Singh
+    highlight: true
+    marks: '*'
+  - name: D Sharma
+  - name: TR Anumandla
+  - name: M Lu
+  - name: V Sharma
+  - name: K Zhu
+venue:
+  - text: 'ICML MoFA 2025'
+  - text: 'ICML VecDB 2025'
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/pdf/2507.21099'
+  - label: Code
+    kind: code
+    url: 'https://github.com/m1chae11u/ad-doc-reranker'

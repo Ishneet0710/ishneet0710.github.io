@@ -1,0 +1,24 @@
+title: 'What Do Refusal Tokens Learn? Fine-Grained Representations and Evidence for Downstream Steering'
+date: 2025-12-01
+selected: true
+selected_order: none
+authors:
+  - name: R Alagharu
+    marks: '*'
+  - name: IS Singh
+    highlight: true
+    marks: '*'
+  - name: A Batta
+  - name: JS Liang
+  - name: S Shamsudeen
+  - name: A Sheth
+  - name: K Zhu
+venue:
+  - text: 'NeurIPS Mechanistic Interpretability Workshop 2025'
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://openreview.net/pdf?id=szBGSWqwB7'
+  - label: Code
+    kind: code
+    url: 'https://github.com/RishabSA/interp-refusal-tokens'

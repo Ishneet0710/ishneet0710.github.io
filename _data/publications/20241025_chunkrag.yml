@@ -1,0 +1,20 @@
+title: 'ChunkRAG: Novel LLM-Chunk Filtering Method for RAG Systems'
+date: 2024-10-25
+selected: true
+selected_order: none
+authors:
+  - name: IS Singh
+    highlight: true
+  - name: R Aggarwal
+  - name: I Allahverdiyev
+  - name: M Taha
+  - name: A Akalin
+  - name: K Zhu
+  - name: S O'Brien
+venue:
+  - text: 'NAACL SRW 2025'
+  - text: 'SoCal NLP Symposium 2024'
+links:
+  - label: Paper
+    kind: paper
+    url: 'https://arxiv.org/pdf/2410.19572'
